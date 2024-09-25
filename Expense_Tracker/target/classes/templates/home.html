@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker - Home</title>
+  
+	<style>
+		
+		body {
+		    font-family: sans-serif;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    min-height: 100vh;
+		    background-color: #f5f5f5;
+		}
+
+		.container {
+		    text-align: center;
+		    padding: 40px;
+		    border-radius: 8px;
+		    background-color: white;
+		    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.button {
+		    display: inline-block;
+		    padding: 12px 24px;
+		    margin: 20px 10px;
+		    text-decoration: none;
+		    border-radius: 5px;
+		    font-weight: bold;
+		}
+
+		.add-button {
+		    background-color: #4CAF50; /* Green */
+		    color: white;
+		}
+
+		.list-button {
+		    background-color: #008CBA; /* Blue */
+		    color: white;
+		}
+	 </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to Expense Tracker</h1>
+        <a th:href="@{/addexpense}" class="button add-button">Add Expense</a>
+        <a th:href="@{/expenses}" class="button list-button">Expense List</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Expense</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-btn {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #23527c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Update Expense</h2>
+        <form th:action="@{'/expenses/update/' + ${expense.id}}" th:object="${expense}" method="post">
+            <label for="expenseName">Expense Name</label>
+            <input type="text" id="expenseName" th:field="*{expenseName}" />
+
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" th:field="*{amount}" step="0.01" />
+
+            <label for="date">Date</label>
+			<input type="hidden" th:field="*{date}" />
+			<input type="date" id="date" th:value="${expense.date}" />
+
+            <label for="description">Description</label>
+            <textarea id="description" th:field="*{description}"></textarea>
+
+            <button type="submit" class="submit-btn">Update Expense</button>
+        </form>
+    </div>
+</body>
+</html>

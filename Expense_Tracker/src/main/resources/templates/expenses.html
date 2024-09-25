@@ -1,0 +1,119 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Expenses</title>
+    <style>
+		body {
+		  font-family: Arial, sans-serif;
+		  background-color: #f9f9f9;
+		  margin: 0;
+		  padding: 0;
+		}
+
+		.container {
+		  max-width: 800px;
+		  margin: 40px auto;
+		  padding: 20px;
+		  background-color: #fff;
+		  border: 1px solid #ddd;
+		  border-radius: 10px;
+		  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		h2 {
+		  margin-top: 0;
+		  color: #333;
+		}
+
+		ul {
+		  list-style: none;
+		  padding: 0;
+		  margin: 0;
+		}
+
+		li {
+		  padding: 20px;
+		  border-bottom: 1px solid #ddd;
+		}
+
+		li:last-child {
+		  border-bottom: none;
+		}
+
+		h3 {
+		  margin-top: 0;
+		  color: #337ab7;
+		}
+
+		p {
+		  margin-bottom: 10px;
+		}
+
+		p span {
+		  font-weight: bold;
+		}
+
+		.actions {
+		  margin-top: 10px;
+		}
+
+		.delete, .update {
+		  margin-left: 10px;
+		  padding: 5px 10px;
+		  border: none;
+		  border-radius: 5px;
+		  cursor: pointer;
+		}
+
+		.delete {
+		  background-color: #d9534f;
+		  color: #fff;
+		}
+
+		.update {
+		  background-color: #5cb85c;
+		  color: #fff;
+		}
+
+		.add-expense {
+		  display: block;
+		  margin-top: 20px;
+		  padding: 10px 20px;
+		  background-color: #5cb85c;
+		  color: #fff;
+		  border: none;
+		  border-radius: 5px;
+		  cursor: pointer;
+		  text-decoration: none;
+		}
+
+		.add-expense:hover {
+		  background-color: #23527c;
+		}
+	</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Expense List</h2>
+        <ul>
+            <li th:each="expense : ${expenses}">
+                <h3 th:text="${expense.expenseName}"></h3>
+                <p>
+                    <span>Amount:</span> <span th:text="${expense.amount}"></span>
+                    <br>
+                    <span>Date:</span> <span th:text="${expense.date}"></span>
+                </p>
+                <div class="actions">
+                    <a class="delete" th:href="@{'/expenses/delete/' + ${expense.id}}">Delete</a>
+                    <a class="update" th:href="@{'/expenses/update/' + ${expense.id}}">Update</a>
+                </div>
+            </li>
+        </ul>
+        <a class="add-expense" th:href="@{/addexpense}">Add Expense</a>
+    </div>
+</body>
+</html>
+
+
